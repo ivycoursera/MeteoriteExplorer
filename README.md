@@ -17,10 +17,10 @@ An application that provides users with the ability to explore meteorite strikes
 
 - Environment variables in the `.env` file in the "backend" directory
 
-| Name        | Required | Description         |
-| ----------- | -------- | ------------------- |
-| `PORT`      | yes      | Express server port |
-| `APP_TOKEN` | yes      | Socrata App-token   |
+| Name        | Required | Description                |
+| ----------- | -------- | -------------------------- |
+| `PORT`      | yes      | Express server port : 5000 |
+| `APP_TOKEN` | yes      | Socrata App-token          |
 
 ## First run server:
 
