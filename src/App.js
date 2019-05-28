@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import LandingPage from './components/LandingPage';
+import MeteoriteList from './components/MeteoriteList';
 import axios from 'axios';
 import Loading from './components/Loading';
 
@@ -44,7 +44,7 @@ function App() {
         <Loading />
       ) : (
         <div>
-          <LandingPage meteorites={meteorites} />
+          <MeteoriteList meteorites={meteorites} />
         </div>
       )}
     </div>
