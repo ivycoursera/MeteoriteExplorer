@@ -4,7 +4,18 @@ import Meteorite from './Meteorite';
 
 const LandingPage = () => {
   const [meteorites, setMeteorites] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  function sortByName(data) {
+    return data.sort((a, b) => {
+      const nameA = a.name.toLowerCase();
+      const nameB = b.name.toLowerCase();
+      if (nameA < nameB) return -1;
+      if (nameA > nameB) return 1;
+      return 0;
+    });
+  }
   useEffect(() => {
     if (!meteorites.length) {
       const callApi = async () => {
@@ -12,7 +23,9 @@ const LandingPage = () => {
           .get('/api')
           .then((response) => {
             console.log(response.data);
-            !meteorites.length && setMeteorites(response.data);
+            console.log(sortByName(response.data));
+            !meteorites.length && setMeteorites(sortByName(response.data));
+            setLoading(false);
           })
           .catch((error) => {
             console.log(error);
@@ -23,20 +36,38 @@ const LandingPage = () => {
   });
 
   function meteoriteList() {
-    return meteorites.map((currentmeteorite) => {
-      return (
-        <Meteorite meteorite={currentmeteorite} key={currentmeteorite.id} />
-      );
-    });
+    if (filteredList.length) {
+      return filteredList.sort().map((currentmeteorite) => {
+        return (
+          <Meteorite meteorite={currentmeteorite} key={currentmeteorite.id} />
+        );
+      });
+    } else {
+      return meteorites.map((currentmeteorite) => {
+        return (
+          <Meteorite meteorite={currentmeteorite} key={currentmeteorite.id} />
+        );
+      });
+    }
+  }
+
+  function handleSearch(name) {
+    setFilteredList(
+      meteorites.filter(
+        (meteorite) =>
+          meteorite.name.toLowerCase().indexOf(name.toLowerCase()) !== -1
+      )
+    );
   }
 
   return (
     <div>
-      <h2>Meteorite Explorer</h2>
-      <table className="table">
-        <thead className="thead-light">
+      <label>{`Search Meteorite by name `}</label>
+      <input type="search" onChange={(e) => handleSearch(e.target.value)} />
+      <table className="table table-striped">
+        <thead className="thead-dark">
           <tr>
-            <th>Name</th>
+            <th className="text-left">Name</th>
             <th>Id</th>
             <th>Name Type</th>
             <th>Rec class</th>

@@ -3,7 +3,7 @@ import React from 'react';
 function Meteorite({ meteorite }) {
   return (
     <tr>
-      <td>{meteorite.name}</td>
+      <td className="text-left">{meteorite.name}</td>
       <td>{meteorite.id}</td>
       <td>{meteorite.nametype}</td>
       <td>{meteorite.recclass}</td>

@@ -5,7 +5,8 @@ import LandingPage from './components/LandingPage';
 
 function App() {
   return (
-    <div className="Container">
+    <div className="Container text-center">
+      <h2>Meteorite Explorer</h2>
       <LandingPage />
     </div>
   );
