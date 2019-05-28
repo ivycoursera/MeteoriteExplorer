@@ -16,9 +16,9 @@ app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
 });
 
-app.get('/data', (req, res) => {
-  axios
+app.get('/api', async (req, res) => {
+  await axios
     .get(`${url}?$$app_token=${APP_TOKEN}`)
-    .then((res) => console.log(res))
+    .then((response) => res.send(response.data))
     .catch((error) => console.log(error));
 });
