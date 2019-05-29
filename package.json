@@ -17,7 +17,6 @@
   },
   "scripts": {
     "start": "npm run dev",
-    "build": "react-scripts build",
     "client": "react-scripts start",
     "server": "npm run start --prefix backend",
     "dev": "concurrently \"npm run server\" \"npm run client\""
