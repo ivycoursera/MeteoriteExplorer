@@ -20,8 +20,7 @@
     "build": "react-scripts build",
     "client": "react-scripts start",
     "server": "npm run start --prefix backend",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {
     "extends": "react-app"
