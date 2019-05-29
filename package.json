@@ -18,7 +18,7 @@
   "scripts": {
     "start": "npm run dev",
     "client": "react-scripts start",
-    "server": "npm run start --prefix backend",
+    "server": "npm run start --prefix server",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {
